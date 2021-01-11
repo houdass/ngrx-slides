@@ -1,0 +1,312 @@
+<!doctype html>
+<!--suppress CheckImageSize -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Présentation Angular</title>
+
+    <meta name="description" content="Exploring the GitHub Service Universe">
+    <meta name="author" content="Bjoern Kimminich">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <style>
+        .text-primary {
+            color: #ba2bd2 !important;
+        }
+
+        .text-secondary {
+            color: #4b314f !important;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .rounded {
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section>
+            <img src="assets/ngrx.svg" class="heart" width="200" height="200"
+                 style="background: none; border:none; box-shadow:none;"/>
+
+            <h1 class="text-primary">NgRx</h1>
+            <p>HOUDASS Youness</p>
+            <p>
+                <small>Email: houd.youness@gmail.com</small>
+            </p>
+            <p>
+                <a href="https://ngrx.io/">https://ngrx.io/</a>
+            </p>
+        </section>
+
+        <section>
+            <section>
+                <h2 class="text-primary">1- Introduction</h2>
+            </section>
+            <section>
+                <p class="text-left">NgRx permet de gérer l'état de votre application en la stockant dans un objet
+                    JavaScript.</p>
+                <p class="text-left">Ainsi avec NgRx, tous les composants de votre application pourront partager
+                    aisément l'état de cette
+                    application.
+                </p>
+            </section>
+            <section>
+                <p class="text-left">Si vous devez vous passer de ngrx, vous auriez tendance à utiliser les outils que
+                    Angular propose pour l'interaction entre composants à savoir Input ou Output. Rassurez-vous, en
+                    procédant ainsi, vous obtiendrez à coup sûr une application effectuant des requêtes assez
+                    complexes et dans des directions assez amusantes.</p>
+                <img src="assets/with-angular.png">
+            </section>
+            <section>
+                <h3>Implémentations</h3>
+                <ul>
+                    <li>@ngrx/store</li>
+                    <li>@angular-redux/store</li>
+                    <li>Akita</li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Store</h3>
+                <p class="text-left">Le Store c'est tout simplement un simple objet JavaScript contenant l’état de votre
+                    application. La première étape pour définir le store, c'est de trouver les éléments constitutifs
+                    de ce dernier. Si vous concevez une boutique en ligne, le store pourra être le panier de
+                    l'utilisateur.</p>
+            </section>
+            <section>
+                <h3>Installation</h3>
+                <pre><code>npm i -S @ngrx/store</code></pre>
+                <p>ou bien,</p>
+                <pre><code>npm i -S @ngrx/{store,effects,entity,router-store}</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">2- Reducers</h3>
+                <p class="text-left">
+                    Les reducers ne sont que des fonctions n'ayant qu'un seul rôle: modifier le state de votre
+                    application en fonction d'une action reçue.</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">3- Actions</h3>
+                <p class="text-left">Les actions sont des objects, de simples dénominations servant à représenter une
+                    interaction. Elles n'apportent rien de fonctionnel, et ne sont là que pour apporter un nom ("type")
+                    qui les représente et, optionnellement, un ou plusieurs arguments.</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">4- Selectors</h3>
+                <p class="text-left">
+                    Un selector est tout simplement une fonction qui prend en paramètre tout ou une partie du state de
+                    l’application et en renvoie une version formatée et/ou réduite, propice aux besoins de nos vues.</p>
+                <p class="text-left">Concrètement un selector très simple pourrait être :</p>
+                <pre><code>const getTodos = state => state.todos;</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">5- Devtools</h3>
+                <p class="text-left">@ngrx/store-devtools vous permettra de voir chaque changement de state, de
+                    conserver un historique et de faire un export de vos states (et inversement).</p>
+                <pre><code>npm i -S @ngrx/store-devtools</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">6- Entity</h3>
+                <p class="text-left">@ngrx/entity fournit des méthodes (API) pour traiter directement avec notre entité
+                    comme AddOne ou AddMany, RemoveOne ...</p>
+                <pre><code>npm i -S @ngrx/entity</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">7- Effects</h3>
+                <p class="text-left">@ngrx/effects vous fournit des listenners d’actions qui peuvent effectuer des
+                    fonctions et retourner une nouvelle action (Side effects).</p>
+                <pre><code>npm i -S @ngrx/effects</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">8- Router</h3>
+                <p>@ngrx/router-store est tout simplement un pont pour faire communiquer le router Angular à notre
+                    store.</p>
+                <pre><code>npm i -S @ngrx/router-store</code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h3 class="text-primary">9- Schematics</h3>
+                <p class="text-left">Les schematics peuvent être vues comme des recettes qui pourront être utilisées
+                    en ligne de commande pour générer du code, le corriger ou le mettre à jour afin de respecter les
+                    derniers breaking changes ou guidelines du framework ou d'une librairie.</p>
+
+                <pre><code>ng config cli.defaultCollection @ngrx/schematics</code></pre>
+
+                <pre><code>npm i -D @ngrx/schematics</code></pre>
+
+                <pre><code>ng generate entity --name User --module somewhere/somewhere.module.ts</code></pre>
+
+                <pre><code>https://github.com/ngrx/platform/tree/master/docs/</code></pre>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme || 'league', // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    parallaxBackgroundImage: 'assets/bg.svg',
+    parallaxBackgroundSize: '1500px 1000px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      {
+        src: 'lib/js/classList.js', condition: function () {
+        return !document.body.classList;
+      }
+      },
+      {
+        src: 'plugin/markdown/marked.js', condition: function () {
+        return !!document.querySelector('[data-markdown]');
+      }
+      },
+      {
+        src: 'plugin/markdown/markdown.js', condition: function () {
+        return !!document.querySelector('[data-markdown]');
+      }
+      },
+      {
+        src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+        hljs.initHighlightingOnLoad();
+      }
+      },
+      {
+        src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+        return !!document.body.classList;
+      }
+      },
+      {
+        src: 'plugin/notes/notes.js', async: true, condition: function () {
+        return !!document.body.classList;
+      }
+      }
+    ]
+  });
+
+</script>
+
+<script src="js/raphael-min.js"></script>
+<script src="js/underscore-min.js"></script>
+<script src="js/sequence-diagram-min.js"></script>
+
+<script>
+  var webHooksDiagram = Diagram.parse(
+    "participant User\n" +
+    "Provider->GitHub: Register OAuth Application (optional)\n" +
+    "GitHub-->Provider: Client ID & Secret\n" +
+    "User->Provider: Request WebHook URI\n" +
+    "Provider-->User:\n" +
+    "User->GitHub: Add WebHook\n" +
+    "GitHub->Provider: Call WebHook\n" +
+    "Provider-->User: Provide Service\n"
+  );
+  webHooksDiagram.drawSVG("webHooksDiagram", {theme: 'hand'});
+
+  var serviceHooksDiagram = Diagram.parse(
+    "participant User\n" +
+    "Provider->GitHub: Develop Service Hook\n" +
+    "User->Provider: Request Access Key (optional)\n" +
+    "Provider-->User:\n" +
+    "User->GitHub: Configure Service Hook\n" +
+    "GitHub->Provider: Call Service Hook\n" +
+    "Provider-->User: Provide Service\n"
+  );
+  serviceHooksDiagram.drawSVG("serviceHooksDiagram", {theme: 'hand'});
+
+  var accountIntegrationDiagram = Diagram.parse(
+    "participant User\n" +
+    "User->Provider: Configure Service\n" +
+    "Provider->GitHub: Request Access\n" +
+    "GitHub->User:\n" +
+    "User-->GitHub:\n" +
+    "GitHub-->Provider: Grant Access\n" +
+    "Provider->GitHub: Configure Service- or WebHook\n" +
+    "GitHub->Provider: Call Hook\n" +
+    "Provider-->User: Provide Service\n"
+  );
+  accountIntegrationDiagram.drawSVG("accountIntegrationDiagram", {theme: 'hand'});
+
+  var serviceChainDiagram = Diagram.parse(
+    "participant User\n" +
+    "participant PAAS Provider\n" +
+    "participant QA Provider\n" +
+    "participant CI Provider\n" +
+    "GitHub->CI Provider: Trigger Build\n" +
+    "CI Provider->QA Provider: Static Analysis\n" +
+    "QA Provider-->User: Send Results\n" +
+    "CI Provider->PAAS Provider: Deploy\n" +
+    "PAAS Provider-->User: Running Instance\n"
+  );
+  serviceChainDiagram.drawSVG("serviceChainDiagram", {theme: 'hand'});
+</script>
+</body>
+</html>
